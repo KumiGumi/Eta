@@ -50,7 +50,7 @@ async def on_message(message):
         text_content = soup.get_text()
 
         # Process with OpenAI
-        url_response = openai.Completion.create(engine="davinci", prompt=text_content, max_tokens=150)
+        url_response = openai.ChatCompletion.create(engine="gpt-4-1106-preview", prompt=text_content, max_tokens=150)
         url_reply = url_response['choices'][0]['text'].strip()
 
         # Respond
@@ -74,6 +74,5 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
+
 bot.run(DiscordKey)
-
-
